@@ -1,0 +1,134 @@
+<html>
+	<head>
+	<style type="text/css">
+		html, body {
+			height: 100%;
+		}
+
+		html {
+			display: table;
+			margin: auto;
+		}
+
+		.main1 {
+			border: 3px solid;
+			margin: 0 340px 0 340px;
+			border: 3px solid;
+			padding: 10px;
+		}
+
+		.main2 {
+			border: 3px solid;
+			padding: 10px;
+		}
+
+		.form {
+			border: 3px solid;
+			padding: 5px;
+			width: 600px;
+		}
+
+		.form td{
+			padding-bottom: 4px;
+			border-bottom: 1px solid lightgrey;
+		}
+
+		#logo img,span{
+			vertical-align: middle;
+			font-size: 20px
+		}
+
+		form input[type=submit] {
+			width: 7em;
+			float: right;
+			padding-left: 5px;
+		}
+
+		form input[type=reset] {
+			width: 7em;
+			margin-left: 230px;
+		}
+	</style>
+	<script type="text/javascript">
+		function validation(){
+			if(document.ebayForm.keyword.value==""){
+				alert("Please enter value for Key Words");
+				return false;
+			}
+			if(!isValidInt(document.ebayForm.minPrice.value)){
+				if(document.ebayForm.minPrice.value!=""){
+					alert("Invalid Min Price Value");
+					return false;
+				}
+			}
+			if(!isValidInt(document.ebayForm.maxPrice.value)){
+				if(document.ebayForm.maxPrice.value!=""){
+					alert("Invalid Max Price Value");
+					return false;
+				}
+			}
+			if(document.ebayForm.maxPrice.value!="" && document.ebayForm.maxPrice.value!="" && document.ebayForm.minPrice.value > document.ebayForm.maxPrice.value){
+				alert("Minimum price cannot be greater than Maximum price");
+				return false;
+			}
+			var maxHandlingTime = document.ebayForm.maxHandlingTime.value;
+			if(maxHandlingTime!=""){
+					if(!isValidInt(maxHandlingTime)){
+					alert("Invalid Max Handling Time Value");
+					return false;
+				}
+				else{
+					if(maxHandlingTime<1){
+						alert("Max handling time should be an integer greater than or equal to 1");
+						return false;
+					}
+				}
+			}
+			return true;
+		}
+		function isValidInt(num){
+			if (isNaN(num) || parseInt(Number(num)) != num || isNaN(parseInt(num, 10))){			
+				return false;
+			}
+			return true;
+		}
+	</script>
+	</head>
+	<body>
+		<div class="main1" align="center">
+		<div id="logo" align="center"><img height="75" width="75" src="http://cs-server.usc.edu:45678/hw/hw6/ebay.jpg"/><span><b>Shopping</b><br/><br/></span></div>
+		<div class="form" align="center"><form name="ebayForm" method="post" onsubmit="return validation()" action="processForm.php">
+			<table>
+				<tr><td><b>Key Words*:</b></td><td><input type="text" size="65" name="keyword"/></td></tr>
+				<tr><td><b>Price Range:</b></td><td>from $ <input type="text" size="5" name="minPrice"/> to $ <input type="text" size="5" name="maxPrice"/></td></tr>
+				<tr><td><b>Condition:</b></td><td><input type="checkbox" name="condition[]" value="1000"/>New
+						  &emsp;<input type="checkbox" name="condition[]" value="3000"/>Used
+						  &emsp;<input type="checkbox" name="condition[]" value="4000"/>Very Good
+						  &emsp;<input type="checkbox" name="condition[]" value="5000"/>Good
+						  &emsp;<input type="checkbox" name="condition[]" value="6000"/>Acceptable</td></tr>
+				<tr><td><b>Buying formats:</b></td><td><input type="checkbox" name="buyingFormats[]" value="FixedPrice"/>Buy It Now
+										  &emsp;<input type="checkbox" name="buyingFormats[]" value="Auction"/>Auction
+										  &emsp;<input type="checkbox" name="buyingFormats[]" value="Classified"/>Classified Ads</td></tr>
+				<tr><td><b>Seller:</b></td><td><input type="checkbox" name="seller" value="accepted"/>Return accepted</td></tr>
+				<tr><td style="vertical-align: top" rowspan="3"><b>Shipping:</b></td><td style="border-bottom:0">  <input type="checkbox" name="freeShipping" value="free"/>Free Shipping</td></tr>
+				<tr>								  <td style="border-bottom:0">	<input type="checkbox" name="expeditedShipping" value="expedited"/>Expedited shipping available</td></tr>
+				<tr>								  <td>  Max handling time (days):<input type="text" size="5" name="maxHandlingTime"/></td></tr>
+				<tr><td><b>Sort by:</b></td><td><select name="sortOrder">
+											<option value="BestMatch">Best Match</option>
+											<option value="CurrentPriceHighest">Price: Highest first</option>
+											<option value="PricePlusShippingHighest">Price+Shipping: Highest first</option>
+											<option value="PricePlusShippingLowest">Price+Shipping: Lowest first</option>
+										</select></td></tr>
+				<tr><td style="border-bottom:0"><b>Results Per Page:</b></td><td style="border-bottom:0"><select name="results">
+											<option value="5">5</option>
+											<option value="10">10</option>
+											<option value="15">15</option>
+											<option value="20">20</option>
+										</select></td></tr>
+				<tr><td style="border-bottom:0">&nbsp;</td><td style="border-bottom:0"><input type="reset" value="clear" width="10"/><input type="submit" value="search" width="10"/></td></tr>
+			</table>
+		</form></div>
+		</div>
+		<noscript>
+	</body>
+</html>

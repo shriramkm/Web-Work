@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">My Ebay Custom Search App</string>
+
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string-array name="eBaySortBy">
+        <item>Best Match</item>
+        <item>Price: highest first</item>
+        <item>Price + Shipping: highest first</item>
+        <item>Price + Shipping: lowest first</item>
+    </string-array>
+    <string name="title_activity_search_results">SearchResultsActivity</string>
+    <string name="title_activity_details">DetailsActivity</string>
+    <string name="title_activity_fb">FBActivity</string>
+    <string name="facebook_app_id">"1437712573190020"</string>
+</resources>

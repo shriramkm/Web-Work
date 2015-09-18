@@ -1,0 +1,48 @@
+
+		html, body {
+			height: 100%;
+		}
+
+		html {
+			display: table;
+			margin: auto;
+		}
+
+		.main1 {
+			border: 3px solid;
+			margin: 0 340px 0 340px;
+			border: 3px solid;
+			padding: 10px;
+		}
+
+		.main2 {
+			border: 3px solid;
+			padding: 10px;
+		}
+
+		.form {
+			border: 3px solid;
+			padding: 5px;
+			width: 600px;
+		}
+
+		.form td{
+			padding-bottom: 4px;
+			border-bottom: 1px solid lightgrey;
+		}
+
+		#logo img,span{
+			vertical-align: middle;
+			font-size: 20px
+		}
+
+		form input[type=submit] {
+			width: 7em;
+			float: right;
+			padding-left: 5px;
+		}
+
+		form input[type=reset] {
+			width: 7em;
+			margin-left: 230px;
+		}

@@ -1,0 +1,48 @@
+<html>
+<head>
+	<title>Company list from XML</title>
+	<script type="text/javascript">
+		var xmlDoc;
+		function loadXML(url) {
+			alert(url);
+			if (window.XMLHttpRequest)
+			{
+				// code for IE7+, Firefox, Chrome, Opera, Safari
+				xmlhttp=new XMLHttpRequest();
+			}
+			else{
+				// code for IE6, IE5
+				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xmlhttp.open("GET",url,false); //open, send, responseXML are
+			xmlhttp.send(); //properties of XMLHTTPRequest
+			xmlDoc=xmlhttp.responseXML;
+			//console.log(xmlDoc);
+			processXML(xmlDoc);
+			return xmlDoc;
+		}
+		function processXML(xmlDoc){
+			if(xmlDoc){
+				var table = xmlDoc.documentElement.children[0].children[0];
+				if(table.childElementCount > 1){
+					console.log("valid");
+				}
+				else{
+					alert("Error processing XML");
+				}
+			}
+			else{
+				alert("Error processing XML");
+			}
+		}
+	</script>
+</head>
+<body style="display:table;height: 100%;width: 100%;">
+	<div align="center" style="display:table-cell;vertical-align:middle">
+		Enter URL for Company List XML file<br/><br/>
+		<input type="text" id="url"/><br/><br/>
+		<input type="button" value="Submit Query" onclick="loadXML(document.getElementById('url').value)"/><br/><br/>
+	</div>
+	<noscript>
+</body>
+</html>
